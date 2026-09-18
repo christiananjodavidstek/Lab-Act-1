@@ -13,7 +13,6 @@ public class Main {
 
         while (orderAgain == 'Y' || orderAgain == 'y') {
 
-            // Canteen Menu
             System.out.println("\n===== CANTEEN MENU =====");
             System.out.println("1. Burger Overload       - $100.00");
             System.out.println("2. Beef n Fries          - $80.00");
@@ -21,7 +20,6 @@ public class Main {
             System.out.println("4. Chicken Alfredo       - $150.00");
             System.out.println("5. Fried Chicken   - $200.00");
 
-            // Get order information
             System.out.print("Enter item number: ");
             int itemNumber = input.nextInt();
 
@@ -31,19 +29,16 @@ public class Main {
             System.out.print("Are you a student? (Y/N): ");
             char student = input.next().charAt(0);
 
-            // Validate item number
             if (itemNumber < 1 || itemNumber > 5) {
                 System.out.println("Invalid item number. Please try again.");
                 continue;
             }
 
-            // Validate quantity
             if (quantity < 1 || quantity > 10) {
                 System.out.println("Invalid quantity. Please enter 1 to 10.");
                 continue;
             }
 
-            // Validate student status
             if (student != 'Y' && student != 'y' &&
                 student != 'N' && student != 'n') {
 
@@ -51,7 +46,6 @@ public class Main {
                 continue;
             }
 
-            // Set price based on item number
             double price = 0;
 
             switch (itemNumber) {
@@ -76,10 +70,8 @@ public class Main {
                     break;
             }
 
-            // Calculate order amount
             double orderAmount = price * quantity;
-
-            // Calculate deduction
+            
             double deduction = 0;
 
             if ((student == 'Y' || student == 'y') && orderAmount >= 500) {
@@ -95,12 +87,10 @@ public class Main {
                 deduction = orderAmount * 0.05;
             }
 
-            // Update totals
             totalQuantity += quantity;
             totalAmount += orderAmount;
             totalDeduction += deduction;
 
-            // Display order information
             System.out.println("\nOrder accepted!");
             System.out.printf("Order amount: $%.2f%n", orderAmount);
             System.out.printf("Deduction: $%.2f%n", deduction);
@@ -109,7 +99,6 @@ public class Main {
                 orderAmount - deduction
             );
 
-            // Ask if customer wants another order
             System.out.print("\nDo you want to order again? (Y/N): ");
             orderAgain = input.next().charAt(0);
         }
